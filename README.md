@@ -2,11 +2,11 @@
 # HW1
 ## Devlog
 
-###Q1
+### Q1
 
 I am Pengcheng Qi, He/Him
 
-###Q2
+### Q2
 
 "It can move, meaning it should have a speed variable to be multiplied with deltatime and the input vector for locomotion." and indeed I wrote that line in the Update() function for the bunny to move.
 
