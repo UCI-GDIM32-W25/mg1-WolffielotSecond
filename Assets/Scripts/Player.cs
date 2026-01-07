@@ -13,16 +13,30 @@ public class Player : MonoBehaviour
 
     private void Start ()
     {
-        
+        _numSeedsLeft = _numSeeds;
+        _numSeedsPlanted = 0;
+        _plantCountUI.UpdateSeeds(_numSeedsLeft, _numSeedsPlanted);
     }
 
     private void Update()
     {
-        
+        _playerTransform.Translate(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * _speed * Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlantSeed();
+        }
     }
 
     public void PlantSeed ()
     {
-        
+
+        if (_numSeedsLeft > 0)
+        {
+            Debug.Log("plant");
+            Instantiate(_plantPrefab, _playerTransform.position, Quaternion.identity);
+            _numSeedsLeft--;
+            _numSeedsPlanted++;
+        }
+        _plantCountUI.UpdateSeeds(_numSeedsLeft, _numSeedsPlanted);
     }
 }
